@@ -30,29 +30,20 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,700" rel="stylesheet" type="text/css" />
     
 	<!-- style -->
-	<link href="https://cdn.muicss.com/mui-0.1.21/css/mui.min.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.muicss.com/mui-0.1.21/js/mui.min.js"></script>
 	<link rel="stylesheet" href="app/style/app.css"/>
+	<link rel="stylesheet" href="vendor/bootstrap/3.3.5/css/bootstrap.css"/>
+	<link rel="stylesheet" href="vendor/bootstrap/3.3.5/css/bootstrap-theme.css"/>
 </head>
 <body>
-<div class="mui-appbar">
-	<table width="100%">
-		<tr style="vertical-align: middle;">
-			<td class="mui-appbar-height" style="padding:6px;">
-				<i class="fa fa-bars fa-lg"></i>
-			</td>
-			<td class="mui-appbar-height" style="padding:6px;">
-				<i class="fa fa-home fa-lg"></i>
-			</td>
-			<td class="mui-appbar-height" width="100%"></td>
-			<td class="mui-appbar-height" style="padding:6px;">
-				<i class="fa fa-gear fa-lg"></i>
-			</td>
-		</tr>
-	</table>
-</div>
-<div class="mui-container hb-content">
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">TOP</div>
+	</nav>
+	<nav class="navbar navbar-default navbar-fixed-bottom">
+		<div class="container">BOTTOM</div>
+	</nav>
+
 	<div ui-view></div>
-</div>
+	<script type='text/javascript' src="vendor/jquery/jquery.min.2.1.1.js"></script>
+	<script type='text/javascript' src="vendor/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 </html>

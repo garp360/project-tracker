@@ -6,10 +6,18 @@
     text-overflow: ellipsis;
 }
 
+.hb-content {
+	padding-top: 64px;
+}
 
 /* ----- overrides -----------------------------------------------------------------------------*/
 .mui-appbar {
   /* background-color: #2196F3; */
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  left: 0px;
   background-color: #BF360C;
   color: #FFF;
+  z-index: 1;
 }

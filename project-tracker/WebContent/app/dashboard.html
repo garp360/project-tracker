@@ -1,0 +1,63 @@
+<div class="mui-appbar">
+	<table width="100%">
+		<tr style="vertical-align: middle;">
+			<td class="mui-appbar-height" style="padding:6px;">
+				<i class="fa fa-bars fa-lg"></i>
+			</td>
+			<td class="mui-appbar-height" style="padding:6px;">
+				<i class="fa fa-home fa-lg"></i>
+			</td>
+			<td class="mui-appbar-height" width="100%"></td>
+			<td class="mui-appbar-height" style="padding:6px;">
+				<i class="fa fa-gear fa-lg"></i>
+			</td>
+		</tr>
+	</table>
+</div>
+<div class="mui-container">
+	<form>
+		<legend>Project Demographics</legend>
+		<div class="mui-form-group">
+			<input ng-model="project.name" type="text" class="mui-form-control" required>
+			<label class="mui-form-floating-label">Name of Project</label>
+		</div>
+		<div class="mui-form-group">
+			<div class="mui-select">
+				<label class="hb-floating-label">Project Status</label>
+				<select name="status" id="status" ng-model="status" ng-change="onChangeStatus(status)" ng-options="status.name for status in statusList | orderBy:'order'"></select>
+			</div>
+		</div>
+		<div class="mui-form-group">
+			<input ng-model="project.code" type="text" class="mui-form-control" required> 
+			<label class="mui-form-floating-label">Project Code</label>
+		</div>
+		<div class="mui-form-group">
+			<textarea  ng-model="project.summary" class="mui-form-control" required></textarea>
+			<label class="mui-form-floating-label">Project Summary</label>
+		</div>
+		<div class="mui-form-group">
+			<div class="mui-select">
+				<label class="hb-floating-label">Project Owner</label>
+				<select name="owner" id="owner" ng-model="owner" ng-change="onChangeOwner(owner)" ng-options="owner.name for owner in owners | orderBy:'name'"></select>
+			</div>
+		</div>
+		<legend>Important Dates</legend>
+		<div class="mui-form-group">
+			<input ng-model="project.startdate.projected" class="mui-form-control" required />
+			<label class="mui-form-floating-label">Projected Start Date</label>
+		</div>
+		<div class="mui-form-group">
+			<input ng-model="project.startdate.actual" class="mui-form-control" required />
+			<label class="mui-form-floating-label">Actual Start Date</label>
+		</div>
+		<div class="mui-form-group">
+			<input ng-model="project.enddate.projected" class="mui-form-control" required />
+			<label class="mui-form-floating-label">Projected End Date</label>
+		</div>
+		<div class="mui-form-group">
+			<input ng-model="project.enddate.actual" class="mui-form-control" required />
+			<label class="mui-form-floating-label">Actual End Date</label>
+		</div>
+		<button type="submit" class="mui-btn mui-btn-default mui-btn-raised">Submit</button>
+	</form>
+</div>

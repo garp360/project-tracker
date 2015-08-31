@@ -1,0 +1,15 @@
+.hb-floating-label {
+	color: rgba(0,0,0,.54);
+    font-size: 12px;
+    line-height: 15px;
+    top: 0;
+    text-overflow: ellipsis;
+}
+
+
+/* ----- overrides -----------------------------------------------------------------------------*/
+.mui-appbar {
+  /* background-color: #2196F3; */
+  background-color: #BF360C;
+  color: #FFF;
+}

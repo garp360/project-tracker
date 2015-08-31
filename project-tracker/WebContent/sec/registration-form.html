@@ -1,0 +1,61 @@
+<div class="well">
+	<form name="frmRegistration" class="form-horizontal">
+	  <div class="form-group" ng-class="{ 'has-error': frmRegistration.username.$touched && frmRegistration.username.$invalid }">
+	  	<label class="sr-only" for="usernameField">Email address</label>
+	    <div class="col-xs-12">
+	      	<input ng-model="registrationForm.username" type="email" class="form-control" id="usernameField" placeholder="Email" name="username" required>	      
+		    <div ng-messages="frmRegistration.username.$error" ng-if="frmRegistration.username.$touched">
+		        <p ng-message="email">This email does not look right.</p>
+		        <p ng-message="required">Your email is required.</p>
+		    </div>
+	    </div>
+	  </div>
+	  <div class="form-group" ng-class="{ 'has-error': frmRegistration.password.$touched && frmRegistration.password.$invalid }">
+	    <label class="sr-only" for="passwordField">Password</label>
+	    <div class="col-xs-12">
+	      <input ng-model="registrationForm.password" type="password" class="form-control" placeholder="Password" id="passwordField" name="password" ng-minlength="5" required>
+	   	  <div ng-messages="frmRegistration.password.$error" ng-if="frmRegistration.password.$touched">
+		        <p ng-message="required">Your password is required.</p>
+		        <p ng-message="minlength">Too short!</p>
+		    </div>
+	    </div>
+	  </div>
+	  <div class="form-group" ng-class="{ 'has-error': frmRegistration.confPassword.$touched && frmRegistration.confPassword.$invalid }">
+	    <label class="sr-only" for="confPasswordField">Confirm Password</label>
+	    <div class="col-xs-12">
+	      <input ng-model="registrationForm.confPassword" type="password" class="form-control" placeholder="Confirm Password" id="confPasswordField" name="confPassword" ui-validate=" '$value==password' " ui-validate-watch=" 'password' " ng-minlength="5" required>
+	      <div ng-messages="frmRegistration.confPassword.$error" ng-if="frmRegistration.confPassword.$touched">
+		        <p ng-message="required">Your password is required.</p>
+		        <p ng-message="minlength">Too short!</p>
+		    </div>
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label class="sr-only" for="firstNameField">First Name</label>
+	    <div class="col-xs-8">
+	      <input ng-model="registrationForm.firstName" type="text" class="form-control" id="firstNameField" placeholder="First Name">
+	    </div>
+	    <label class="sr-only" for="middleNameField">Middle Initial</label>
+	    <div class="col-xs-4">
+	      <input ng-model="registrationForm.middleName" type="text" class="form-control" id="middleNameField" placeholder="MI">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label class="sr-only" for="lastNameField">Last Name</label>
+	    <div class="col-xs-12">
+	      <input ng-model="registrationForm.lastName" type="text" class="form-control" id="lastNameField" placeholder="Last Name">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <div class="col-xs-12">
+	      <button type="submit" class="btn btn-primary form-control" ng-click="register()">Register</button>
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <div class="col-xs-12">
+	      <a class="btn btn-default form-control" ui-sref="home" role="button">Cancel</a>
+	    </div>
+	  </div>
+	</form>
+</div>
+

@@ -27,20 +27,44 @@
 		</div>
 		<legend>Important Dates</legend>
 		<div class="mui-form-group">
-			<input ng-model="project.startdate.projected" class="mui-form-control" required />
-			<label class="mui-form-floating-label">Projected Start Date</label>
+			<label class="hb-floating-label">Projected Start Date</label>
+			<mb-datepicker element-id='projectedStartDate'
+                   input-class="mbdatepicker-input"
+                   input-name="projectedStartDate"
+                   arrows="arrows"
+                   calendar-header="header"
+                   date="project.startdate.projected"
+                   date-format="dddd, MMMM Do, YYYY"></mb-datepicker>
 		</div>
 		<div class="mui-form-group">
-			<input ng-model="project.startdate.actual" class="mui-form-control" required />
-			<label class="mui-form-floating-label">Actual Start Date</label>
+			<label class="hb-floating-label">Actual Start Date</label>
+			<mb-datepicker element-id='actualStartDate'
+                   input-class="mbdatepicker-input"
+                   input-name="actualStartDate"
+                   arrows="arrows"
+                   calendar-header="header"
+                   date="project.startdate.actual"
+                   date-format="dddd, MMMM Do, YYYY"></mb-datepicker>
 		</div>
 		<div class="mui-form-group">
-			<input ng-model="project.enddate.projected" class="mui-form-control" required />
-			<label class="mui-form-floating-label">Projected End Date</label>
+			<label class="hb-floating-label">Projected End Date</label>
+			<mb-datepicker element-id='projectedEndDate'
+                   input-class="mbdatepicker-input"
+                   input-name="projectedEndDate"
+                   arrows="arrows"
+                   calendar-header="header"
+                   date="project.enddate.projected"
+                   date-format="dddd, MMMM Do, YYYY"></mb-datepicker>
 		</div>
 		<div class="mui-form-group">
-			<input ng-model="project.enddate.actual" class="mui-form-control" required />
-			<label class="mui-form-floating-label">Actual End Date</label>
+			<label class="hb-floating-label">Actual End Date</label>
+			<mb-datepicker element-id='actualEndDate'
+                   input-class="mbdatepicker-input"
+                   input-name="actualEndDate"
+                   arrows="arrows"
+                   calendar-header="header"
+                   date="project.enddate.actual"
+                   date-format="dddd, MMMM Do, YYYY"></mb-datepicker>
 		</div>
-		<button type="submit" class="mui-btn mui-btn-default mui-btn-raised">Submit</button>
+		<button type="submit" ng-click="save()" class="mui-btn mui-btn-default mui-btn-raised">Submit</button>
 	</form>

@@ -26,6 +26,22 @@
     			$scope.project.enddate.projected = end.format("dddd, MMMM Do YYYY");;
     			$scope.project.enddate.actual = end.format("dddd, MMMM Do YYYY");
     			
+    			$scope.arrows = {
+			        year: {
+			            left: 'vendor/mbdatepicker/images/white_arrow_left.svg',
+			            right: 'vendor/mbdatepicker/images/white_arrow_right.svg'
+			        },
+			        month: {
+			            left: 'vendor/mbdatepicker/images/grey_arrow_left.svg',
+			            right: 'vendor/mbdatepicker/images/grey_arrow_right.svg'
+			        }
+			    }
+    			
+    			$scope.onChangeOwner = onChangeOwner;
+    			$scope.onChangeStatus = onChangeStatus;
+    			$scope.save = save;
+    			
+    			
     			function onChangeOwner(owner) {
     				$scope.project.owner = owner;
     			};
@@ -35,8 +51,26 @@
     			};
     			
     			function save() {
-    				$log.debug(project.toString());
+    				for ( var property in $scope.project) {
+    					if ($scope.project.hasOwnProperty(property)) {
+    						if(property === 'enddate' || property === 'startdate'){
+    							logProperty($scope.project[property]);
+    						} else {
+    							$log.debug(property + " = [" + $scope.project[property] + "]");
+    						}
+    					}
+    				}
     			};
+    			
+    			function logProperty(prop, value) {
+					for ( var property in value) {
+						if (value.hasOwnProperty(property)) {
+							$log.debug(property + " = [" + value[property] + "]");
+						}
+					}
+    				
+    			}
+    			
     		},
         	resolve : 
         	{

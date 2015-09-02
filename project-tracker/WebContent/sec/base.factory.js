@@ -8,13 +8,18 @@
     	function BaseFactory ($q, $log) 
     	{
     		var factory = {};
+    		var projectIdPrefix = "prj";
+    		var resourceIdPrefix = "rsc";
     		
     		factory.AUTH_REF = new Firebase("https://astadia-trax.firebaseio.com");
 			factory.PROJECT_REF = new Firebase("https://astadia-trax.firebaseio.com/projects");
 			factory.RESOURCE_REF = new Firebase("https://astadia-trax.firebaseio.com/resources");
+			factory.PROJECT_ID_PREFIX = projectIdPrefix;
+			factory.RESOURCE_ID_PREFIX = resourceIdPrefix;
 			
 			factory.getValue = getValue;
-			factory.createGuid = createGuid;
+			factory.createProjectId = createProjectGuid;
+			factory.createResourceId = createResourceGuid;
 			
 			function getValue(value, defaultValue) 
 			{
@@ -25,6 +30,18 @@
 				} 
 				return result;
 			};
+			
+			function createProjectGuid() 
+			{
+				var guid = createGuid();
+				return projectIdPrefix + "-" + guid;
+			}
+			
+			function createResourceGuid() 
+			{
+				var guid = createGuid();
+				return resourceIdPrefix + "-" + guid;
+			}
 			
 			function createGuid()
 			{

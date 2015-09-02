@@ -1,0 +1,37 @@
+{
+    "projects": {},
+    "resources": {},
+    "lookups": {
+        "status": [
+            {
+                "name": "GOOD",
+                "color": "GREEN",
+                "order": 10
+            },
+            {
+                "name": "WARNING",
+                "color": "YELLOW",
+                "order": 50
+            },
+            {
+                "name": "TROUBLE",
+                "color": "RED",
+                "order": 100
+            }
+        ],
+        "role": [
+            {
+                "name": "MANAGER",
+                "order": 10
+            },
+            {
+                "name": "EMPLOYEE",
+                "order": 50
+            },
+            {
+                "name": "CONTRACTOR",
+                "order": 100
+            }
+        ]
+    }
+}

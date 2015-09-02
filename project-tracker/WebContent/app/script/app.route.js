@@ -13,65 +13,7 @@
 		{
         	url:'/',
     		templateUrl: 'app/dashboard.html',
-    		controller: function($scope, $log, statusList, owners, start, end) {
-    			$scope.project = {};
-    			$scope.project.startdate = {};
-    			$scope.project.enddate = {};
-    			$scope.statusList = statusList;
-    			$scope.owners = owners;
-    			$scope.owner = $scope.owners[0];
-    			$scope.status = $scope.statusList[0];
-    			$scope.project.startdate.projected = start.format("dddd, MMMM Do YYYY");;
-    			$scope.project.startdate.actual = start.format("dddd, MMMM Do YYYY");;
-    			$scope.project.enddate.projected = end.format("dddd, MMMM Do YYYY");;
-    			$scope.project.enddate.actual = end.format("dddd, MMMM Do YYYY");
-    			
-    			$scope.arrows = {
-			        year: {
-			            left: 'vendor/mbdatepicker/images/white_arrow_left.svg',
-			            right: 'vendor/mbdatepicker/images/white_arrow_right.svg'
-			        },
-			        month: {
-			            left: 'vendor/mbdatepicker/images/grey_arrow_left.svg',
-			            right: 'vendor/mbdatepicker/images/grey_arrow_right.svg'
-			        }
-			    }
-    			
-    			$scope.onChangeOwner = onChangeOwner;
-    			$scope.onChangeStatus = onChangeStatus;
-    			$scope.save = save;
-    			
-    			
-    			function onChangeOwner(owner) {
-    				$scope.project.owner = owner;
-    			};
-
-    			function onChangeStatus(status) {
-    				$scope.project.status = status;
-    			};
-    			
-    			function save() {
-    				for ( var property in $scope.project) {
-    					if ($scope.project.hasOwnProperty(property)) {
-    						if(property === 'enddate' || property === 'startdate'){
-    							logProperty($scope.project[property]);
-    						} else {
-    							$log.debug(property + " = [" + $scope.project[property] + "]");
-    						}
-    					}
-    				}
-    			};
-    			
-    			function logProperty(prop, value) {
-					for ( var property in value) {
-						if (value.hasOwnProperty(property)) {
-							$log.debug(property + " = [" + value[property] + "]");
-						}
-					}
-    				
-    			}
-    			
-    		},
+    		controller: 'ProjectController',
         	resolve : 
         	{
         		statusList : function() 
@@ -96,20 +38,66 @@
         			return startDate.add(14, 'days');
         		}
         	}
+		})
+		.state('init', 
+		{
+        	url:'/init',
+    		templateUrl: 'app/init.html',
+    		controller: function($scope, $log, ResourceFactory, ProjectFactory) {
+    			
+    			$scope.initalizeResources = initResources;
+    			$scope.initalizeProjects = initProjects;
+
+    			function initProjects() {
+    				var defaultProjects = [];
+    				
+    				defaultProjects.push(getProject("NAVAIR", "NAVAIR", getResource("Garth", "Pidcock", "J", "MANAGER"), 1439006400000,1439006400000,1469937600000,-1,"GREEN"));
+    				
+    				ProjectFactory.initializeProjects(defaultProjects);
+    			}
+    			
+    			function initResources() {
+    				var defaultResources = [];
+        			defaultResources.push(getResource("Garth", "Pidcock", "J", "MANAGER"))
+        			defaultResources.push(getResource("Randy", "Bouquet", "", "MANAGER"))
+        			defaultResources.push(getResource("Kevin", "Criss", "", "MANAGER"))
+        			defaultResources.push(getResource("Bishwas", "Khanal", "", "MANAGER"))
+        			defaultResources.push(getResource("Brady", "Hustad", "", "MANAGER"))
+        			
+    				ResourceFactory.initializeResources(defaultResources);
+    			}
+    			
+    			function getResource(fn, ln, mi, role) {
+    				var rsc = {
+    					firstName: fn,
+    					lastName: ln,
+    					middleInitial: mi,
+    					role: role
+    				}
+    				
+    				return rsc;
+    			}
+    			
+    			function getProject(name, code, owner, pStart, aStart, pEnd, aEnd, status) {
+    				var json = {
+    					name : name,
+    					code : code,
+    					owner : owner,
+    					start : {
+    						projected : pStart,
+    						actual : aStart
+    					},
+    					end : {
+    						projected : pEnd,
+    						actual : aEnd
+    					},
+    					status : status
+    				};
+
+    				return json;
+    			}
+    		}
 		});
-//		.state('project', 
-//		{
-//        	url:'/project',
-//    		templateUrl: 'project.html',
-//    		controller: 'ProjectController',
-//        	resolve : 
-//        	{
-//        		statusList : function() 
-//        		{
-//        			return ['RED', 'GREEN', 'YELLOW'];
-//        		}
-//        	}
-//		});
 		
 	}]); 
 	

@@ -14,6 +14,7 @@
 	<script type='text/javascript' src="vendor/angular-ui-router/2.1.4/angular-ui-router.js"></script>
 	<script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
 	<script src="https://cdn.firebase.com/libs/angularfire/1.1.1/angularfire.min.js"></script>
+	<script type='text/javascript' src="vendor/angular-material/0.10.1/angular.material.js"></script>
 	<script type='text/javascript' src="vendor/moment/2.10.3/moment.js"></script>
 	
 	<!-- factory  -->
@@ -24,6 +25,7 @@
 
 	<!-- controller -->
 	<script type='text/javascript' src="sec/module.controller.js"></script>
+	<script type='text/javascript' src="app/script/app.controller.js"></script>
 	<script type='text/javascript' src="app/script/data.controller.js"></script>
 	<script type='text/javascript' src="app/script/project.controller.js"></script>
 
@@ -36,31 +38,69 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,700" rel="stylesheet" type="text/css" />
     
 	<!-- style -->
-	<link rel="stylesheet" href="vendor/mbdatepicker/mui-mbdatepicker.css"/>
-    <script src="vendor/mbdatepicker/mui-mbdatepicker.js"></script>
-	<link href="https://cdn.muicss.com/mui-0.1.21/css/mui.min.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.muicss.com/mui-0.1.21/js/mui.min.js"></script>
-	<link rel="stylesheet" href="app/style/app.css"/>
+	<link href="vendor/angular-material/0.10.1/angular.material.css" rel="stylesheet" type="text/css" />
+
+
 </head>
 <body>
-<div class="mui-appbar">
-	<table width="100%">
-		<tr style="vertical-align: middle;">
-			<td class="mui-appbar-height" style="padding:6px;">
-				<i class="fa fa-bars fa-lg"></i>
-			</td>
-			<td class="mui-appbar-height" style="padding:6px;">
-				<i class="fa fa-home fa-lg"></i>
-			</td>
-			<td class="mui-appbar-height" width="100%"></td>
-			<td class="mui-appbar-height" style="padding:6px;">
-				<i class="fa fa-gear fa-lg"></i>
-			</td>
-		</tr>
-	</table>
+<div ng-controller="AppController" layout="column" style="height:500px;">
+  <section layout="row" flex>
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+      <md-toolbar class="md-theme-indigo">
+        <h1 class="md-toolbar-tools">Sidenav Left</h1>
+      </md-toolbar>
+      <md-content layout-padding ng-controller="SideBarLeftController">
+        <md-button ng-click="close()" class="md-primary" hide-gt-md>
+          Close Sidenav Left
+        </md-button>
+        <p hide-md show-gt-md>
+          This sidenav is locked open on your device. To go back to the default behavior,
+          narrow your display.
+        </p>
+      </md-content>
+    </md-sidenav>
+    <md-content flex layout-padding>
+      <md-content>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" aria-label="Settings">
+          <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+        </md-button>
+        <h2>
+          <span>Toolbar with Icon Buttons</span>
+        </h2>
+        <span flex></span>
+        <md-button class="md-icon-button" aria-label="Favorite">
+          <md-icon md-svg-icon="img/icons/favorite.svg" style="color: greenyellow;"></md-icon>
+        </md-button>
+        <md-button class="md-icon-button" aria-label="More">
+          <md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+  </md-content>
 </div>
-<div class="mui-container hb-content">
-	<div ui-view></div>
+    </md-content>
+    <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+      <md-toolbar class="md-theme-light">
+        <h1 class="md-toolbar-tools">Sidenav Right</h1>
+      </md-toolbar>
+      <md-content ng-controller="SideBarRightController" layout-padding>
+        <form>
+          <md-input-container>
+            <label for="testInput">Test input</label>
+            <input type="text" id="testInput"
+                   ng-model="data" md-sidenav-focus>
+          </md-input-container>
+        </form>
+        <md-button ng-click="close()" class="md-primary">
+          Close Sidenav Right
+        </md-button>
+      </md-content>
+    </md-sidenav>
+  </section>
 </div>
+
+
 </body>
 </html>

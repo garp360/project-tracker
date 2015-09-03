@@ -13,29 +13,12 @@
 		{
         	url:'/',
     		templateUrl: 'app/dashboard.html',
-    		controller: 'ProjectController',
+    		controller: 'DashboardController',
         	resolve : 
         	{
-        		statusList : function() 
+        		projects : function(ProjectFactory) 
         		{
-        			return [{name: 'GOOD',    color : 'GREEN',  order : 10},                  
-        					{name: 'WARNING', color : 'YELLOW', order : 50},
-        					{name: 'TROUBLE', color : 'RED',    order : 100} ];
-        		},
-        		owners : function() 
-        		{
-        			return [ {name: 'Bishwas'},
-        			         {name: 'Hustad, Brady'},
-        			         {name: 'Boquet, Randy'},
-        			         {name: 'Pidcock, Garth'} 
-        			];
-        		},
-        		start : function() {
-        			return moment().startOf('week');
-        		},
-        		end : function(start) {
-        			var startDate = angular.copy(start);
-        			return startDate.add(14, 'days');
+        			return ProjectFactory.findAll();
         		}
         	}
 		})

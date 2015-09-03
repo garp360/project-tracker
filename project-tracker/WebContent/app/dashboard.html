@@ -1,59 +1,10 @@
 <div>
-Dashboard
-<br /><br />
-Dashboard
-Dashboard
-<br /><br />
-Dashboard
-Dashboard
-<br /><br />
-Dashboard
-Dashboard
-<br /><br />
-Dashboard
-Dashboard
-<br /><br />
-Dashboard
-Dashboard
-<br /><br />
-Dashboard
-Dashboard
-<br /><br />
-Dashboard
-Dashboard
-<br /><br />
-Dashboard
-Dashboard
-<br /><br />
-Dashboard
-Dashboard
-<br /><br />
-Dashboard
-Dashboard
-<br /><br />
-Dashboard
-Dashboard
-<br /><br />
-Dashboard
-Dashboard
-<br /><br />
-Dashboard
-Dashboard
-<br /><br />
-Dashboard
-Dashboard
-<br /><br />
-Dashboard
-Dashboard
-<br /><br />
-Dashboard
-Dashboard
-<br /><br />
-Dashboard
-Dashboard
-<br /><br />
-Dashboard
-Dashboard
-<br /><br />
-Dashboard
+	<md-list> 
+		<md-list-item class="md-3-line" ng-repeat="project in projects">
+			<div class="md-list-item-text">
+				<h3>{{project.name}}</h3>
+			</div>
+			<md-divider ng-if="!$last" />
+		</md-list-item> 
+	</md-list>
 </div>

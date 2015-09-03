@@ -9,8 +9,14 @@
 		var factory = angular.extend(BaseFactory, {});
 
 		factory.initializeProjects = init;
+		factory.findAll = findAll;
 		factory.findById = findById;
 		factory.save = save;
+
+		function findAll() 
+		{
+			return $firebaseArray(factory.PROJECT_REF).$loaded();
+		};
 
 		function findById(id) 
 		{

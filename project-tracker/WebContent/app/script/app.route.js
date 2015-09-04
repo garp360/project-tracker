@@ -22,6 +22,25 @@
         		}
         	}
 		})
+		.state('new-project', 
+		{
+        	url:'/projects/new',
+    		templateUrl: 'app/project.html',
+    		controller: 'ProjectController',
+        	resolve : 
+        	{
+        		statusTypes: function(LookupFactory) {
+        			return LookupFactory.getStatusTypes();
+        		},
+        		resources: function(ResourceFactory) {
+        			return ResourceFactory.findAll();
+        		},
+        		project : function(ProjectFactory, statusTypes) 
+        		{
+        			return ProjectFactory.getDefaultProject(statusTypes);
+        		}
+        	}
+		})
 		.state('init', 
 		{
         	url:'/init',

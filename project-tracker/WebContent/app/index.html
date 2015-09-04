@@ -20,6 +20,7 @@
 <!-- factory  -->
 <script type='text/javascript' src="sec/module.factory.js"></script>
 <script type='text/javascript' src="sec/base.factory.js"></script>
+<script type='text/javascript' src="app/script/lookup.factory.js"></script>
 <script type='text/javascript' src="app/script/project.factory.js"></script>
 <script type='text/javascript' src="app/script/resource.factory.js"></script>
 
@@ -55,36 +56,32 @@
 		</md-sidenav>
 		<section layout="column" flex>
 			<md-toolbar style="min-height: 48px;position: fixed; top:0px; left:0px;">
-				<table class="md-toolbar-tools" style="height: 48px; max-height: 48px; table-layout:fixed; width: 100%;">
+				<table class="md-toolbar-tools" style="height: 48px; max-height: 48px; table-layout:fixed; width: 100%;font-size:1.2em;padding:16px 4px;">
 					<tr>
 						<td width="1">
-							<md-button class="md-icon-button" aria-label="Menu" ng-click="toggleLeft()"> <i class="fa fa-bars fa-lg"></i> </md-button>
+							<md-button class="md-icon-button" style="width:24px;" aria-label="Menu" ng-click="toggleLeft()"> <i class="fa fa-bars fa-lg"></i> </md-button>
 						</td>
-						<td width="100%">
-							<h2>
-								<span>Toolbar with Icon Buttons</span>
-							</h2>
+						<td width="100%" style="font-size:.85em">
+							Project Tracker
 						</td>
 						<td width="1">
-							<md-button class="md-icon-button" aria-label="Home"> <i class="fa fa-home fa-lg"></i> </md-button>
+							<md-button class="md-icon-button" style="width:24px;" aria-label="Home"> <i class="fa fa-home fa-lg"></i> </md-button>
 						</td>
 						<td width="1">
-							<md-button class="md-icon-button" aria-label="Add"  ng-click="toggleRight()"> <i class="fa fa-plus-square-o fa-lg"></i> </md-button>
+							<md-button class="md-icon-button" style="width:24px;" aria-label="Add"  ng-click="toggleRight()"> <i class="fa fa-plus-square-o fa-lg"></i> </md-button>
 						</td>
 					</tr>
 				</table>
 			</md-toolbar>
-			<md-content layout-padding id="content" style="padding-top:50px;"><div ui-view></div></md-content>
+			<md-content layout-padding id="content" style="padding-top:40px;"><div ui-view></div></md-content>
 		</section>
 		<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right"> 
 			<md-toolbar class="md-theme-light">
-				<h1 class="md-toolbar-tools">Sidenav Right</h1>
+				<h1 class="md-toolbar-tools">Add</h1>
 			</md-toolbar> 
 			<md-content ng-controller="SideBarRightController" layout-padding>
-				<form>
-					<md-input-container> <label for="testInput">Test input</label> <input type="text" id="testInput" ng-model="data" md-sidenav-focus> </md-input-container>
-				</form>
-				<md-button ng-click="close()" class="md-primary"> Close Sidenav Right </md-button>
+				<md-button ng-click="newProject()" class="md-primary"> New Project </md-button><br />
+				<md-button ng-click="newResource()" class="md-primary"> New Resource </md-button>
 			</md-content>
 		</md-sidenav>
 	</div>

@@ -8,12 +8,6 @@
     	BaseController.$inject = ['$scope', '$log', '$firebaseAuth', 'AuthFactory'];
     	
     	function BaseController ($scope, $log, $firebaseAuth, AuthFactory) {
-
-			this.STATUS_TYPE = [
-				  {name: 'GOOD', color : 'GREEN', order : 10},                  
-				  {name: 'WARNING', color : 'YELLOW', order : 50},
-				  {name: 'TROUBLE', color : 'RED', order : 100} ];
-			
 			$scope.formatNameLF = function(user) 
 			{
 				var name = "";

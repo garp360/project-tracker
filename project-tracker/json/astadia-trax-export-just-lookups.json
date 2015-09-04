@@ -1,0 +1,35 @@
+{
+    "lookups": {
+        "roleType": {
+            "MANAGER": {
+                "name": "MANAGER",
+                "order": 10
+            },
+            "EMPLOYEE": {
+                "name": "EMPLOYEE",
+                "order": 50
+            },
+            "CONTRACTOR": {
+                "name": "CONTRACTOR",
+                "order": 100
+            }
+        },
+        "statusType": {
+            "GREEN": {
+                "color": "GREEN",
+                "name": "GOOD",
+                "order": 10
+            },
+            "YELLOW": {
+                "color": "YELLOW",
+                "name": "WARNING",
+                "order": 50
+            },
+            "RED": {
+                "color": "RED",
+                "name": "TROUBLE",
+                "order": 100
+            }
+        }
+    }
+}

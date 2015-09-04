@@ -7,14 +7,20 @@
 
 	function ResourceFactory($q, $log, $firebaseAuth, $firebaseArray, $firebaseObject, BaseFactory) {
 		var factory = angular.extend(BaseFactory, {});
-
+		
 		factory.initializeResources = init;
+		factory.findAll = findAll;
 		factory.findById = findById;
 		factory.save = save;
 
 		function findById(id) 
 		{
 			return $firebaseObject(factory.RESOURCE_REF.child(id)).$loaded();
+		};
+
+		function findAll() 
+		{
+			return $firebaseArray(factory.RESOURCE_REF).$loaded();
 		};
 
 		function save(resource) {

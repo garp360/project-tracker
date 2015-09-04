@@ -9,7 +9,7 @@
     
     	AppController.$inject = ['$scope', '$log', '$timeout', '$mdSidenav', '$mdUtil'];
     	SideBarLeftController.$inject = ['$scope', '$log', '$timeout', '$mdSidenav'];
-    	SideBarRightController.$inject = ['$scope', '$log', '$timeout', '$mdSidenav'];
+    	SideBarRightController.$inject = ['$scope', '$log', '$state', '$timeout', '$mdSidenav'];
     	
     	function AppController ($scope, $log, $timeout, $mdSidenav, $mdUtil) 
     	{
@@ -42,12 +42,26 @@
     	};
     	   
     	    
-	    function SideBarRightController($scope, $log, $timeout, $mdSidenav) 
+	    function SideBarRightController($scope, $log, $state, $timeout, $mdSidenav) 
 	    {
-	    	$scope.close = function () {
+	    	$scope.close = close;
+	    	$scope.newProject = newProject;
+	    	$scope.newResource = newResource;
+	    	
+	    	
+	    	function close() {
 	    		$mdSidenav('right').close().then(function () {
     				$log.debug("close RIGHT is done");
     	        });
+	        };
+	        
+	        function newProject() {
+	        	$state.go('new-project');
+	        	close();
+	        };
+
+	        function newResource() {
+	        	
 	        };
         };
 })();

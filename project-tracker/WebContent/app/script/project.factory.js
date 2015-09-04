@@ -11,6 +11,7 @@
 		factory.initializeProjects = init;
 		factory.findAll = findAll;
 		factory.findById = findById;
+		factory.getDefaultProject = getDefaultProject;
 		factory.save = save;
 
 		function findAll() 
@@ -21,6 +22,29 @@
 		function findById(id) 
 		{
 			return $firebaseObject(factory.PROJECT_REF.child(id)).$loaded();
+		};
+
+		function getDefaultProject(statusTypes) 
+		{
+			var start = moment.utc().milliseconds(0).seconds(0).minutes(0).hours(0).valueOf(0);
+			var end = moment(angular.copy(start)).add(30, 'days').valueOf(0);
+			
+			var project = {
+					name : "",
+					code : "",
+					owner : {},
+					start : {
+						projected : start,
+						actual : -1
+					},
+					end : {
+						projected : end,
+						actual : -1
+					},
+					status : {}
+				};
+			
+			return project;
 		};
 
 		function save(project) {

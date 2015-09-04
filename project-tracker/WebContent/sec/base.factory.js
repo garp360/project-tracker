@@ -14,6 +14,8 @@
     		factory.AUTH_REF = new Firebase("https://astadia-trax.firebaseio.com");
 			factory.PROJECT_REF = new Firebase("https://astadia-trax.firebaseio.com/projects");
 			factory.RESOURCE_REF = new Firebase("https://astadia-trax.firebaseio.com/resources");
+			factory.STATUS_TYPE_REF = new Firebase("https://astadia-trax.firebaseio.com/lookups/statusType");
+			factory.ROLE_TYPE_REF = new Firebase("https://astadia-trax.firebaseio.com/lookups/roleType");
 			factory.PROJECT_ID_PREFIX = projectIdPrefix;
 			factory.RESOURCE_ID_PREFIX = resourceIdPrefix;
 			
@@ -50,6 +52,41 @@
 			        return v.toString(16);
 			    });
 			}
+			
+			function getResource(fn, ln, mi, role) {
+				var rsc = {
+					firstName: fn,
+					lastName: ln,
+					middleInitial: mi,
+					role: role
+				};
+				
+				return rsc;
+			}
+			
+			function getProject(owner) {
+				
+				var start = moment.utc().milliseconds(0).seconds(0).minutes(0).hours(0).valueOf(0);
+				var end = moment(angular.copy(start)).add(30, 'days').valueOf(0);;
+				
+				var json = {
+					name : name,
+					code : code,
+					owner : owner,
+					start : {
+						projected : start,
+						actual : -1
+					},
+					end : {
+						projected : end,
+						actual : -1
+					},
+					status : status
+				};
+
+				return json;
+			};
+			
 			
 			return factory;
     	};

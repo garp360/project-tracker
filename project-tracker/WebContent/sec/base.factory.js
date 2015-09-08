@@ -12,6 +12,7 @@
     		var resourceIdPrefix = "rsc";
     		
     		factory.AUTH_REF = new Firebase("https://astadia-trax.firebaseio.com");
+    		factory.USER_REF = new Firebase("https://astadia-trax.firebaseio.com/users");
 			factory.PROJECT_REF = new Firebase("https://astadia-trax.firebaseio.com/projects");
 			factory.RESOURCE_REF = new Firebase("https://astadia-trax.firebaseio.com/resources");
 			factory.STATUS_TYPE_REF = new Firebase("https://astadia-trax.firebaseio.com/lookups/statusType");

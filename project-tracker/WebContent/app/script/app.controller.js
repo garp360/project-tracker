@@ -7,14 +7,17 @@
     	.controller('SideBarLeftController', SideBarLeftController)
     	.controller('SideBarRightController', SideBarRightController);
     
-    	AppController.$inject = ['$scope', '$log', '$timeout', '$mdSidenav', '$mdUtil'];
+    	AppController.$inject = ['$scope', '$log', '$state', '$timeout', '$mdSidenav', '$mdUtil'];
     	SideBarLeftController.$inject = ['$scope', '$log', '$timeout', '$mdSidenav'];
     	SideBarRightController.$inject = ['$scope', '$log', '$state', '$timeout', '$mdSidenav'];
     	
-    	function AppController ($scope, $log, $timeout, $mdSidenav, $mdUtil) 
+    	function AppController ($scope, $log, $state, $timeout, $mdSidenav, $mdUtil) 
     	{
     		$scope.toggleLeft = buildToggler('left');
     	    $scope.toggleRight = buildToggler('right');
+    	    $scope.home = home;
+    	    $scope.login = login;
+    	    
     	    /**
     	     * Build handler to open/close a SideNav; when animation finishes
     	     * report completion in console
@@ -30,6 +33,14 @@
     	          },200);
     	      return debounceFn;
     	    }
+    	    
+    	    function home() {
+	        	$state.go('dashboard');
+	        };
+
+	        function login() {
+	        	$state.go('login');
+	        };
     	};
     	
     	function SideBarLeftController($scope, $log, $timeout, $mdSidenav) 

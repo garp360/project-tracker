@@ -1,0 +1,15 @@
+<md-subheader class="md-primary">Sign In</md-subheader>
+<md-content layout-padding layout="column" layout-sm="column"> 
+	<md-input-container  flex>
+		<label>Email</label> 
+		<input ng-model="token.username">
+	</md-input-container> 
+	<md-input-container flex> 
+		<label>Password</label>
+		<input type="password" ng-model="token.password">
+	</md-input-container>
+</md-content>
+<md-content layout-padding layout="column" layout-sm="column"> 
+    <md-button class="md-raised md-primary">Sign In</md-button><br />
+	<md-button class="md-raised" ng-click="register()">Register</md-button>
+</md-content>

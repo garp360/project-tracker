@@ -23,6 +23,7 @@
 <script type='text/javascript' src="app/script/lookup.factory.js"></script>
 <script type='text/javascript' src="app/script/project.factory.js"></script>
 <script type='text/javascript' src="app/script/resource.factory.js"></script>
+<script type='text/javascript' src="app/script/authorization.factory.js"></script>
 
 <!-- controller -->
 <script type='text/javascript' src="sec/module.controller.js"></script>
@@ -30,6 +31,10 @@
 <script type='text/javascript' src="app/script/app.controller.js"></script>
 <script type='text/javascript' src="app/script/data.controller.js"></script>
 <script type='text/javascript' src="app/script/project.controller.js"></script>
+<script type='text/javascript' src="app/script/resource.controller.js"></script>
+<script type='text/javascript' src="app/script/login.controller.js"></script>
+<script type='text/javascript' src="app/script/registration.controller.js"></script>
+<script type='text/javascript' src="app/script/authorization.controller.js"></script>
 
 <!-- application -->
 <script type='text/javascript' src="app/script/app.js"></script>
@@ -65,7 +70,10 @@
 							Project Tracker
 						</td>
 						<td width="1">
-							<md-button class="md-icon-button" style="width:24px;" aria-label="Home"> <i class="fa fa-home fa-lg"></i> </md-button>
+							<md-button class="md-icon-button" style="width:24px;" aria-label="Home" ng-click="home()"> <i class="fa fa-home fa-lg"></i> </md-button>
+						</td>
+						<td width="1">
+							<md-button class="md-icon-button" style="width:24px;" aria-label="Login" ng-click="login()"> <i class="fa fa-sign-in fa-lg"></i> </md-button>
 						</td>
 						<td width="1">
 							<md-button class="md-icon-button" style="width:24px;" aria-label="Add"  ng-click="toggleRight()"> <i class="fa fa-plus-square-o fa-lg"></i> </md-button>
@@ -73,7 +81,7 @@
 					</tr>
 				</table>
 			</md-toolbar>
-			<md-content layout-padding id="content" style="padding-top:40px;"><div ui-view></div></md-content>
+			<md-content id="content" style="padding-top:50px;"><div ui-view></div></md-content>
 		</section>
 		<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right"> 
 			<md-toolbar class="md-theme-light">

@@ -8,18 +8,12 @@
     	
     	function ProjectController ($scope, $log, $controller, $state, $firebaseAuth, ProjectFactory, statusTypes, resources, project) {
     		
-    		$scope.project = {};
+    		$scope.project = project;
     		$scope.statusTypes = statusTypes;
-    		$scope.owners = resources;
+    		$scope.resources = resources;
 
-    		$scope.currentOwner = $scope.owners[0];
-    		$scope.currentStatus = $scope.statusTypes[0];
-
-    		if(project) {
-    			$scope.project = project;
-    		} else {
-    			
-    		}
+    		$scope.currentOwner = $scope.resources[0];
+    		$scope.currentStatus = project.status;
 
 			$scope.onChangeOwner = onChangeOwner;
 			$scope.onChangeStatus = onChangeStatus;

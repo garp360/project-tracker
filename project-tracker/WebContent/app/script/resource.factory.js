@@ -6,7 +6,7 @@
 	ResourceFactory.$inject = [ '$q', '$log', '$firebaseAuth', '$firebaseArray', '$firebaseObject', 'BaseFactory' ];
 
 	function ResourceFactory($q, $log, $firebaseAuth, $firebaseArray, $firebaseObject, BaseFactory) {
-		var factory = angular.extend(BaseFactory, {});
+		var factory = {};
 		
 		factory.initializeResources = init;
 		factory.findAll = findAll;
@@ -15,12 +15,12 @@
 
 		function findById(id) 
 		{
-			return $firebaseObject(factory.RESOURCE_REF.child(id)).$loaded();
+			return $firebaseObject(BaseFactory.RESOURCE_REF.child(id)).$loaded();
 		};
 
 		function findAll() 
 		{
-			return $firebaseArray(factory.RESOURCE_REF).$loaded();
+			return $firebaseArray(BaseFactory.RESOURCE_REF).$loaded();
 		};
 
 		function save(resource) {
@@ -31,10 +31,10 @@
 		};
 				
 		function init(resources) {
-			$firebaseObject(factory.RESOURCE_REF).$remove().then(function(ref) {
+			$firebaseObject(BaseFactory.RESOURCE_REF).$remove().then(function(ref) {
 				angular.forEach(resources, function(resource){
 					var rsc = convertToJson(resource);
-					factory.RESOURCE_REF.child(factory.createResourceId()).set(rsc);
+					BaseFactory.RESOURCE_REF.child(BaseFactory.createResourceId()).set(rsc);
 				});
 			}, function(error) {
 				console.log("Error:", error);
@@ -45,8 +45,8 @@
 			var json = {
 				firstName : resource.firstName,
 				lastName : resource.lastName,
-				middleInitial : factory.getValue(resource.middleInitial, ""),
-				role: factory.getValue(resource.role, "USER")
+				middleInitial : BaseFactory.getValue(resource.middleInitial, ""),
+				role: BaseFactory.getValue(resource.role, "USER")
 			};
 
 			return json;

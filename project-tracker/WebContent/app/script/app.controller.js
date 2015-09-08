@@ -7,12 +7,13 @@
     	.controller('SideBarLeftController', SideBarLeftController)
     	.controller('SideBarRightController', SideBarRightController);
     
-    	AppController.$inject = ['$scope', '$log', '$state', '$timeout', '$mdSidenav', '$mdUtil'];
-    	SideBarLeftController.$inject = ['$scope', '$log', '$timeout', '$mdSidenav'];
-    	SideBarRightController.$inject = ['$scope', '$log', '$state', '$timeout', '$mdSidenav'];
+    	AppController.$inject = ['$scope', '$log', '$controller', '$state', '$timeout', '$mdSidenav', '$mdUtil'];
+    	SideBarLeftController.$inject = ['$scope', '$log', '$controller', '$timeout', '$mdSidenav'];
+    	SideBarRightController.$inject = ['$scope', '$log', '$controller', '$state', '$timeout', '$mdSidenav'];
     	
-    	function AppController ($scope, $log, $state, $timeout, $mdSidenav, $mdUtil) 
+    	function AppController ($scope, $log, $controller, $state, $timeout, $mdSidenav, $mdUtil) 
     	{
+    		angular.extend(this, $controller('AuthController', {$scope: $scope}));
     		$scope.toggleLeft = buildToggler('left');
     	    $scope.toggleRight = buildToggler('right');
     	    $scope.home = home;
@@ -43,8 +44,10 @@
 	        };
     	};
     	
-    	function SideBarLeftController($scope, $log, $timeout, $mdSidenav) 
+    	function SideBarLeftController($scope, $log, $controller, $timeout, $mdSidenav) 
     	{
+    		angular.extend(this, $controller('AuthController', {$scope: $scope}));
+    		
     	    $scope.close = function () {
     	        $mdSidenav('left').close().then(function () {
     	            $log.debug("close LEFT is done");
@@ -53,8 +56,10 @@
     	};
     	   
     	    
-	    function SideBarRightController($scope, $log, $state, $timeout, $mdSidenav) 
+	    function SideBarRightController($scope, $log, $controller, $state, $timeout, $mdSidenav) 
 	    {
+	    	angular.extend(this, $controller('AuthController', {$scope: $scope}));
+	    	
 	    	$scope.close = close;
 	    	$scope.newProject = newProject;
 	    	$scope.newResource = newResource;

@@ -9,13 +9,23 @@
     	
     	function AuthController($scope, $log, $state, $timeout, AuthorizationFactory) 
     	{
-    		this.isAuth = isAuth;
+    		var authRef = $firebaseAuth(BaseFactory.AUTH_REF);
+    		$scope.isAuth = false;
+    		$scope.currentUser = {};
     		
-    		function isAuth() 
-    		{
-    			return AuthorizationFactory.isAuth();
-    		}
-    		
+    		$scope.authRef.$onAuth(function(auth) {
+				if (auth) {
+					console.log("Logged in as:", auth.uid);
+					$scope.isAuth = true;
+					return $scope.currentUser = AuthFactory.getUser(auth.uid);
+				} else {
+					console.log("Logged out");
+					$scope.isAuth = false;
+					return  {};					
+				}
+			}).then(function(user) {
+				$scope.currentUser = user;
+			});
     	};
 
 })();

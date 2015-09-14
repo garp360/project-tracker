@@ -7,23 +7,18 @@
     
     	LoginController.$inject = ['$scope', '$log', '$controller', '$state', '$timeout', 'AuthorizationFactory'];
     	
-    	function LoginController ($scope, $log, $controller, $state, $timeout, AppController, AuthorizationFactory) 
+    	function LoginController ($scope, $log, $controller, $state, $timeout, AuthorizationFactory) 
     	{
-    		angular.extend(this, $controller('AppController', {$scope: $scope}));
-    		
+    		angular.extend(this, $controller('AuthorizationController', {$scope: $scope}));
     		$scope.token = {username:"",password:""};
-    		$scope.login = login;
+    		$scope.signIn = signIn;
     		$scope.register = register;
     		
-    		function login() 
+    		function signIn() 
     		{
-    			AuthorizationFactory.login($scope.token).then(function(principal) {
-    				
-    			}, function(err) {
-    				
-    			});
+    			this.login($scope.token);
     		};
-    		
+
     		function register() 
     		{
     			$state.go('registration');

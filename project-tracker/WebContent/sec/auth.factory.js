@@ -5,12 +5,12 @@
     	.module('factory.module')
     	.factory('AuthFactory', AuthFactory);
 
-    	AuthFactory.$inject = ['$q', '$log', '$firebaseAuth', '$firebaseArray', '$firebaseObject', 'BaseFactory'];
+    	AuthFactory.$inject = ['$q', '$log', '$firebaseAuth', '$firebaseArray', '$firebaseObject', 'TraxAuthorizationFactory'];
     
-    	function AuthFactory($q, $log, $firebaseAuth, $firebaseArray, $firebaseObject, BaseFactory) {
-			var factory = angular.extend(BaseFactory, {});
-			var authRef = $firebaseAuth(factory.AUTH_REF);
-	
+    	function AuthFactory($q, $log, $firebaseAuth, $firebaseArray, $firebaseObject, TraxAuthorizationFactory) {
+			var factory = {};
+			var authRef = TraxAuthorizationFactory.AUTH_REF;
+			
 			factory.getUser = getUser;
 			factory.getAuth = getAuth;
 			factory.logoff = logoff;
@@ -48,7 +48,8 @@
 			function register ( registrationForm ) {
 				var deferred = $q.defer();
 				var _credentials = {};
-				validateRegistration(registrationForm).then(function (credentials) {
+				
+				TraxAuthorizationFactory.validateRegistration(registrationForm).then(function (credentials) {
 					_credentials = credentials;
 					return authRef.$createUser(_credentials);
 				}, function (error) {
@@ -97,16 +98,7 @@
 				return deferred.promise;
 			};
 			
-			function validateRegistration(registrationForm) {
-				var deferred = $q.defer();
-				if(registrationForm.username && registrationForm.password) {
-					deferred.resolve(getCredentials(registrationForm));
-				} else {
-					deferred.reject("Invalid registration form");
-				}
-
-				return deferred.promise;
-			};
+			
 			
 			function validateLogin(loginForm) {
 				var deferred = $q.defer();

@@ -7,20 +7,20 @@
 
     	AuthorizationFactory.$inject = ['$q', '$log', '$firebaseAuth', '$firebaseArray', '$firebaseObject', 'BaseFactory'];
     
-    	function AuthorizationFactory($q, $log, $firebaseAuth, $firebaseArray, $firebaseObject, BaseFactory) {
-	
-    		var factory = {};
-    		var authRef = $firebaseAuth(BaseFactory.AUTH_REF);
-    		
+    	function AuthorizationFactory($q, $log, $firebaseAuth, $firebaseArray, $firebaseObject, BaseFactory) 
+    	{
+    		var factory = angular.extend(BaseFactory, {});
     		factory.isAuth = isAuth;
 			factory.login = login;
+			factory.logoff = logoff;
 			factory.register = register;
 			
-			function login (token) {
+			function login (token) 
+			{
 				var deferred = $q.defer();
 				if(validate(token)) 
 				{
-					authRef.$authWithPassword({email: token.username, password: token.password}).then(function(auth) {
+					$firebaseAuth(BaseFactory.AUTH_REF).$authWithPassword({email: token.username, password: token.password}).then(function(auth) {
 						deferred.resolve($firebaseObject(BaseFactory.USER_REF.child(auth.uid)).$loaded);
 					}, function(error) {
 						deferred.reject("LOGIN::Invalid login! ERROR: " + error);
@@ -34,10 +34,14 @@
 				return deferred.promise;
 			};
 			
+			function logoff() {
+				return $firebaseAuth(BaseFactory.AUTH_REF).$unauth();
+			};
+			
 			function isAuth() 
 			{
 				var auth = false;
-				if(authRef.getAuth())
+				if($firebaseAuth(BaseFactory.AUTH_REF).getAuth())
 				{
 					auth = true;
 				}
@@ -49,16 +53,17 @@
 				return (token && token.username && token.password && token.username.trim().length > 0 && token.password.trim().length > 0);
 			};
 
-			function register ( registration ) {
+			function register ( registration ) 
+			{
 				var deferred = $q.defer();
 				var credentials = {email: registration.email, password: registration.password};
 				
-				authRef.$createUser(credentials).then(function(auth){
+				$firebaseAuth(BaseFactory.AUTH_REF).$createUser(credentials).then(function(auth){
 					return auth;
 				}, function(error) {
 					deferred.reject("REGISTRATION::Unable to create Firebase user! ERROR: " + error);
 				}).then(function(auth) {
-					return authRef.$authWithPassword(credentials);
+					return $firebaseAuth(BaseFactory.AUTH_REF).$authWithPassword(credentials);
 				}, function(error){
 					deferred.reject("REGISTRATION::Invalid login! ERROR: " + error);
 				}).then(function(auth) {
@@ -78,7 +83,7 @@
 				return deferred.promise;
 			};
 
-		return factory;
-	};
+			return factory;
+    	};
 })();
 

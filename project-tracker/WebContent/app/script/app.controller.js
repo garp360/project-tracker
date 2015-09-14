@@ -10,14 +10,14 @@
     	AppController.$inject = ['$scope', '$log', '$controller', '$state', '$timeout', '$mdSidenav', '$mdUtil'];
     	SideBarLeftController.$inject = ['$scope', '$log', '$controller', '$timeout', '$mdSidenav'];
     	SideBarRightController.$inject = ['$scope', '$log', '$controller', '$state', '$timeout', '$mdSidenav'];
-    	
+    
     	function AppController ($scope, $log, $controller, $state, $timeout, $mdSidenav, $mdUtil) 
     	{
-    		angular.extend(this, $controller('AuthController', {$scope: $scope}));
+    		angular.extend(this, $controller('AuthorizationController', {$scope: $scope}));
     		$scope.toggleLeft = buildToggler('left');
     	    $scope.toggleRight = buildToggler('right');
-    	    $scope.home = home;
-    	    $scope.login = login;
+    	    $scope.goToHome = goToHome;
+    	    $scope.goToSignIn = goToSignIn;
     	    
     	    /**
     	     * Build handler to open/close a SideNav; when animation finishes
@@ -35,18 +35,18 @@
     	      return debounceFn;
     	    }
     	    
-    	    function home() {
+    	    function goToHome() {
 	        	$state.go('dashboard');
 	        };
 
-	        function login() {
+	        function goToSignIn() {
 	        	$state.go('login');
 	        };
     	};
     	
     	function SideBarLeftController($scope, $log, $controller, $timeout, $mdSidenav) 
     	{
-    		angular.extend(this, $controller('AuthController', {$scope: $scope}));
+    		angular.extend(this, $controller('AuthorizationController', {$scope: $scope}));
     		
     	    $scope.close = function () {
     	        $mdSidenav('left').close().then(function () {
@@ -58,7 +58,7 @@
     	    
 	    function SideBarRightController($scope, $log, $controller, $state, $timeout, $mdSidenav) 
 	    {
-	    	angular.extend(this, $controller('AuthController', {$scope: $scope}));
+	    	angular.extend(this, $controller('AuthorizationController', {$scope: $scope}));
 	    	
 	    	$scope.close = close;
 	    	$scope.newProject = newProject;

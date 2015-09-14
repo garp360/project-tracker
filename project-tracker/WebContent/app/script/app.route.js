@@ -30,9 +30,14 @@
 		})
 		.state('registration', 
 		{
-        	url:'/register',
+        	url:'/register/:email',
     		templateUrl: 'app/register.html',
-    		controller: 'RegistrationController'
+    		controller: 'RegistrationController',
+    		resolve : {
+        		registration : function($stateParams){
+        	          return {email: $stateParams.email};
+        	    }
+        	}
 		})
 		.state('new-project', 
 		{

@@ -29,21 +29,7 @@
 					$scope.user = {};
 				}
 			});
-		
-			function login(loginForm) 
-			{
-				$log.debug("email = " + loginForm.username);
-				AuthorizationFactory.login({username: loginForm.username, password: loginForm.password}).then(function(user){
-					$scope.user = user;
-				});
-			};
-			
-			function register(loginForm) 
-			{
-				$log.debug("email = " + loginForm.username);
-				$state.go("registration", {'email': loginForm.username});
-			};
-		
+
 			function logoff() 
 			{
 				AuthorizationFactory.logoff();

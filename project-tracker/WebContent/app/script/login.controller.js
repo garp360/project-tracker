@@ -15,13 +15,18 @@
     		$scope.register = register;
     		
     		function signIn() 
-    		{
-    			this.login($scope.token);
-    		};
+			{
+				AuthorizationFactory.login({username: $scope.token.username, password: $scope.token.password}).then(function(user){
+					$scope.user = user;
+					$state.go('dashboard');
+				}, function(error){
+					$log.debug("ERROR: " + error);
+				});
+			};
 
-    		function register() 
-    		{
-    			$state.go('registration');
-    		};
+			function register() 
+			{
+				$state.go("registration", {'email': $scope.token.username});
+			};
     	};
 })();

@@ -5,11 +5,11 @@
     	.module('controller.module')
     	.controller('RegistrationController', RegistrationController);
     
-	    RegistrationController.$inject = ['$scope', '$log', '$state', '$timeout', 'AuthorizationFactory'];
+	    RegistrationController.$inject = ['$scope', '$log', '$state', '$timeout', 'AuthorizationFactory', 'registration'];
     	
-    	function RegistrationController($scope, $log, $state, $timeout, AuthorizationFactory) 
+    	function RegistrationController($scope, $log, $state, $timeout, AuthorizationFactory, registration) 
     	{
-    		$scope.registration = {};
+    		$scope.registration = registration;
     		$scope.clear = clear;
     		$scope.register = register;
     		

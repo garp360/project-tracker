@@ -75,6 +75,21 @@
         		}
         	}
 		})
+		.state('new-resource', 
+		{
+        	url:'/resources/new',
+    		templateUrl: 'app/resource.html',
+    		controller: 'ResourceController',
+        	resolve : 
+        	{
+        		roles: function(LookupFactory) {
+        			return LookupFactory.getRoleTypes();
+        		},
+        		resource: function(ResourceFactory) {
+        			return {};
+        		}
+        	}
+		})
 		.state('init', 
 		{
         	url:'/init',

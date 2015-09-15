@@ -17,7 +17,7 @@
 	<md-input-container>
 		<label>Owner</label>
 		<md-select ng-model="currentOwner">
-			<md-option ng-repeat="resource in resources | orderBy : 'lastName'" ng-value="resource">{{resource.lastName}}, {{resource.firstName}}</md-option>
+			<md-option ng-repeat="resource in resources | filter:{ isMgr : true } | orderBy : 'lastName'" ng-value="resource">{{resource.lastName}}, {{resource.firstName}}</md-option>
 		</md-select>
 	</md-input-container>
 	<md-input-container flex>

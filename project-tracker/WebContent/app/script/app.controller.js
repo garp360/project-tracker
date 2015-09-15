@@ -77,7 +77,8 @@
 	        };
 
 	        function newResource() {
-	        	
+	        	$state.go('new-resource');
+	        	close();
 	        };
         };
 })();

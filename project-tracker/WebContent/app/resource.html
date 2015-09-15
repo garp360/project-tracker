@@ -1,0 +1,30 @@
+<md-subheader class="md-primary">Create Resource</md-subheader>
+<md-content layout-padding layout="column" layout-sm="column"> 
+	<md-input-container  flex>
+		<label>First Name</label> 
+		<input ng-model="resource.firstName">
+	</md-input-container> 
+	<md-input-container flex> 
+		<label>Last Name</label>
+		<input ng-model="resource.lastName">
+	</md-input-container>
+	<md-input-container flex> 
+		<label>Middle Initial</label>
+		<input ng-model="resource.middleInitial">
+	</md-input-container>
+	<md-input-container>
+		<label>Role</label>
+		<md-select ng-model="currentRole">
+			<md-option ng-repeat="role in roles | orderBy : 'order'" ng-value="role">{{role.name}}</md-option>
+		</md-select>
+	</md-input-container>
+	<md-input-container>
+		<md-checkbox md-no-ink aria-label="Is Manager" ng-model="resource.isMgr" class="md-primary">
+          Checkbox (md-primary): No Ink
+        </md-checkbox>
+	</md-input-container>
+</md-content>
+<md-content layout-padding layout="column" layout-sm="column"> 
+	<md-button class="md-raised">Clear</md-button>
+    <md-button class="md-raised md-primary">Create</md-button>
+</md-content>

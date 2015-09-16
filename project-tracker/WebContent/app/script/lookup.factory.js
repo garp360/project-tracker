@@ -3,9 +3,9 @@
 
 	angular.module('factory.module').factory('LookupFactory', LookupFactory);
 
-	LookupFactory.$inject = [ '$q', '$log', '$firebaseObject', 'BaseFactory' ];
+	LookupFactory.$inject = [ '$q', '$log', '$firebaseObject', '$firebaseArray', 'BaseFactory' ];
 
-	function LookupFactory($q, $log, $firebaseObject, BaseFactory) {
+	function LookupFactory($q, $log, $firebaseObject, $firebaseArray, BaseFactory) {
 		var factory = angular.extend(BaseFactory, {});
 
 		factory.getStatusTypes = getStatusTypes;
@@ -15,7 +15,7 @@
 		{
 			var deferred = $q.defer();
 
-			$firebaseObject(factory.STATUS_TYPE_REF).$loaded().then(function(lookupType) {
+			$firebaseArray(factory.STATUS_TYPE_REF).$loaded().then(function(lookupType) {
 				deferred.resolve(lookupType);
 			}, function(err){
 				$log.debug("Status Type lookup failed");
@@ -27,16 +27,7 @@
 
 		function getRoleTypes() 
 		{
-			var deferred = $q.defer();
-			
-			$firebaseObject(factory.ROLE_TYPE_REF).$loaded().then(function(lookupType) {
-				deferred.resolve(lookupType);
-			}, function(err){
-				$log.debug("Role Type lookup failed");
-				deferred.reject(err);
-			});
-			
-			return deferred.promise;
+			return $firebaseArray(factory.ROLE_TYPE_REF).$loaded();
 		};
 
 		return factory;

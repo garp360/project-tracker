@@ -11,6 +11,7 @@
     	{
     		var factory = angular.extend(BaseFactory, {});
     		factory.isAuth = isAuth;
+    		factory.getUser = getUser;
 			factory.login = login;
 			factory.logoff = logoff;
 			factory.register = register;
@@ -47,6 +48,31 @@
 				}
 				return auth;
 			};
+			
+			function getUser() {
+				var deferred = $q.defer();
+
+				getAuth().then(function(authData) {
+					return authData;
+				}).then(function(authData) {
+					if(authData) {
+						return $firebaseObject(BaseFactory.USER_REF.child(authData.uid)).$loaded();
+					} else {
+						return null;
+					}
+				}).then(function(userData) {
+					deferred.resolve(userData);
+				});
+				
+				return deferred.promise;
+			};
+
+			function getAuth() {
+				var deferred = $q.defer();
+				deferred.resolve($firebaseAuth(BaseFactory.AUTH_REF).$getAuth());
+				return deferred.promise;
+			};
+			
 			
 			function validate(token) 
 			{

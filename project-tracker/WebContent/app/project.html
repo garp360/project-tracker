@@ -10,14 +10,14 @@
 	</md-input-container>
 	<md-input-container>
 		<label>Status</label>
-		<md-select ng-model="currentStatus">
+		<md-select ng-model="project.status">
 			<md-option ng-repeat="status in statusTypes | orderBy : 'order'" ng-value="status">{{status.color}}</md-option>
 		</md-select>
 	</md-input-container>
 	<md-input-container>
 		<label>Owner</label>
-		<md-select ng-model="currentOwner">
-			<md-option ng-repeat="resource in resources | filter:{ isMgr : true } | orderBy : 'lastName'" ng-value="resource">{{resource.lastName}}, {{resource.firstName}}</md-option>
+		<md-select ng-model="project.owner">
+			<md-option ng-repeat="resource in resources |  orderBy : 'lastName'" ng-value="resource">{{resource.lastName}}, {{resource.firstName}}</md-option>
 		</md-select>
 	</md-input-container>
 	<md-input-container flex>
@@ -26,6 +26,6 @@
 	</md-input-container>
 </md-content>
 <md-content layout-padding layout="column" layout-sm="column"> 
-	<md-button class="md-raised">Clear</md-button>
-    <md-button class="md-raised md-primary">Create</md-button>
+	<md-button ng-click="clear()" class="md-raised">Clear</md-button>
+    <md-button ng-click="save()" class="md-raised md-primary">Save</md-button>
 </md-content>

@@ -12,6 +12,7 @@
 		factory.findAll = findAll;
 		factory.findById = findById;
 		factory.save = save;
+		factory.create = create;
 
 		function findById(id) 
 		{
@@ -30,7 +31,9 @@
 				rsc.firstName = resource.firstName;
 				rsc.lastName = resource.firstName;
 				rsc.middleInitial = BaseFactory.getValue(resource.middleInitial, "");
-				role: BaseFactory.getValue(resource.role, "USER")
+				rsc.role =  BaseFactory.getValue(resource.role, "USER");
+				rsc.contactInfo.email = BaseFactory.getValue(resource.contactInfo.email, "");
+				rsc.contactInfo.phone = BaseFactory.getValue(resource.contactInfo.phone, "");
 			});
 			
 			return deferred.promise;
@@ -38,7 +41,7 @@
 
 		function create(resource) 
 		{
-			var rsc = convertToJson(resource);
+			var rsc = BaseFactory.convertResourceToJson(resource);
 			var rscId = BaseFactory.createResourceId();
 			BaseFactory.RESOURCE_REF.child(BaseFactory.createResourceId()).set(rsc);
 			return findById(rscId);
@@ -47,23 +50,12 @@
 		function init(resources) {
 			$firebaseObject(BaseFactory.RESOURCE_REF).$remove().then(function(ref) {
 				angular.forEach(resources, function(resource){
-					var rsc = convertToJson(resource);
+					var rsc = BaseFactory.convertResourceToJson(resource);
 					BaseFactory.RESOURCE_REF.child(BaseFactory.createResourceId()).set(rsc);
 				});
 			}, function(error) {
 				console.log("Error:", error);
 			});
-		}
-
-		function convertToJson(resource) {
-			var json = {
-				firstName : resource.firstName,
-				lastName : resource.lastName,
-				middleInitial : BaseFactory.getValue(resource.middleInitial, ""),
-				role: BaseFactory.getValue(resource.role, "USER")
-			};
-
-			return json;
 		}
 
 		return factory;

@@ -12,19 +12,22 @@
 		<label>Middle Initial</label>
 		<input ng-model="resource.middleInitial">
 	</md-input-container>
+	<md-input-container flex> 
+		<label>Email</label>
+		<input ng-model="resource.contactInfo.email">
+	</md-input-container>
+	<md-input-container flex> 
+		<label>Phone</label>
+		<input ng-model="resource.contactInfo.phone">
+	</md-input-container>
 	<md-input-container>
 		<label>Role</label>
-		<md-select ng-model="currentRole">
+		<md-select ng-model="resource.role">
 			<md-option ng-repeat="role in roles | orderBy : 'order'" ng-value="role">{{role.name}}</md-option>
 		</md-select>
 	</md-input-container>
-	<md-input-container>
-		<md-checkbox md-no-ink aria-label="Is Manager" ng-model="resource.isMgr" class="md-primary">
-          Checkbox (md-primary): No Ink
-        </md-checkbox>
-	</md-input-container>
 </md-content>
 <md-content layout-padding layout="column" layout-sm="column"> 
-	<md-button class="md-raised">Clear</md-button>
-    <md-button class="md-raised md-primary">Create</md-button>
+	<md-button ng-click="clear()"class="md-raised">Clear</md-button>
+    <md-button ng-click="save()" class="md-raised md-primary">Save</md-button>
 </md-content>

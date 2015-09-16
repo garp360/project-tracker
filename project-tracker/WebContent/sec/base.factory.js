@@ -23,6 +23,10 @@
 			factory.getValue = getValue;
 			factory.createProjectId = createProjectGuid;
 			factory.createResourceId = createResourceGuid;
+			factory.convertResourceToJson = convertResourceToJson;
+			factory.convertProjectToJson = convertProjectToJson;
+			factory.convertRoleToJson = convertRoleToJson;
+			factory.convertStatusToJson = convertStatusToJson;
 			
 			function getValue(value, defaultValue) 
 			{
@@ -87,6 +91,52 @@
 
 				return json;
 			};
+			
+			function convertProjectToJson(project) {
+				var json = {
+					name : project.name,
+					code : project.code,
+					owner : convertResourceToJson(project.owner),
+					status : convertStatusToJson(project.status),
+					summary : project.summary
+				};
+
+				return json;
+			}
+			
+			function convertResourceToJson(resource) {
+				var json = {
+					firstName : resource.firstName,
+					lastName : resource.lastName,
+					middleInitial : getValue(resource.middleInitial, ""),
+					role: convertRoleToJson(resource.role),
+					contactInfo : {
+						email: getValue(resource.contactInfo.email, ""),
+						phone: getValue(resource.contactInfo.phone, "")
+					}
+				};
+
+				return json;
+			}
+
+			function convertRoleToJson(role) {
+				var json = {
+					name : role.name,
+					order : role.order
+				};
+				
+				return json;
+			}
+
+			function convertStatusToJson(status) {
+				var json = {
+						name : status.name,
+						color : status.color,
+						order : status.order
+				};
+				
+				return json;
+			}
 			
 			
 			return factory;

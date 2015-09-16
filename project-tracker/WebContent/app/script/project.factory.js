@@ -12,6 +12,7 @@
 		factory.findAll = findAll;
 		factory.findById = findById;
 		factory.save = save;
+		factory.create = create;
 
 		function findAll() 
 		{
@@ -25,8 +26,24 @@
 
 		function save(project) {
 			var deferred = $q.defer();
-		
+			
+			findById(project.$id).then(function(proj){
+				proj.name = project.name,
+				proj.code = project.code,
+				proj.owner = BaseFactory.convertResourceToJson(project.owner);
+				proj.status =  BaseFactory.convertStatusToJson(project.status);
+				summary : BaseFactory.getValue(project.summary, "");
+			});
+			
 			return deferred.promise;
+		};
+
+		function create(project) 
+		{
+			var proj = BaseFactory.convertToProjectJson(project);
+			var projId = BaseFactory.createProjectId();
+			BaseFactory.PROJECT_REF.child(projId).set(proj);
+			return findById(projId);
 		};
 		
 		function init(projects) {

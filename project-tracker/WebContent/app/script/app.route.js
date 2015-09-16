@@ -39,6 +39,27 @@
         	    }
         	}
 		})
+		.state('edit-project', 
+		{
+        	url:'/projects/:projectId',
+    		templateUrl: 'app/project.html',
+    		controller: 'ProjectController',
+        	resolve : 
+        	{
+        		loggedInUser: function(AuthorizationFactory){
+        			return AuthorizationFactory.getUser();
+        		},
+        		statusTypes: function(LookupFactory) {
+        			return LookupFactory.getStatusTypes();
+        		},
+        		resources: function(ResourceFactory) {
+        			return ResourceFactory.findAll();
+        		},
+        		project : function($stateParams, ProjectFactory) {
+      	          return ProjectFactory.findById($stateParams.projectId);
+        		}
+        	}
+		})
 		.state('new-project', 
 		{
         	url:'/projects/new',
@@ -106,9 +127,6 @@
         			};
         				
         			return project;
-        		}, 
-        		projectCopy : function(project) {
-        			return angular.copy(project);
         		}
         	}
 		})

@@ -1,31 +1,37 @@
-<md-subheader class="md-primary">Create Project</md-subheader>
+<md-subheader ng-show="isAuth && !project.$id" class="md-primary">Create Project</md-subheader>
+<md-subheader ng-show="isAuth && project.$id" class="md-primary">Edit Project</md-subheader>
 <md-content layout-padding layout="column" layout-sm="column"> 
 	<md-input-container  flex>
 		<label>Project Name</label> 
-		<input ng-model="project.name">
+		<label style="font-size:1.8em;color:#333333" ng-show="!isAuth">{{project.name}}</label>
+		<input ng-show="isAuth" ng-model="project.name">
 	</md-input-container> 
 	<md-input-container flex> 
 		<label>Project Code</label>
-		<input ng-model="project.code">
+		<label style="font-size:1.8em;color:#333333" ng-show="!isAuth">{{project.code}}</label>
+		<input ng-show="isAuth" ng-model="project.code">
 	</md-input-container>
-	<md-input-container>
+	<md-input-container flex> 
 		<label>Status</label>
-		<md-select ng-model="project.status">
+		<label style="font-size:1.8em;color:#333333" ng-show="!isAuth">{{project.status.color}}</label>
+		<md-select ng-show="isAuth" ng-model="project.status">
 			<md-option ng-repeat="status in statusTypes | orderBy : 'order'" ng-value="status">{{status.color}}</md-option>
 		</md-select>
 	</md-input-container>
-	<md-input-container>
+	<md-input-container flex> 
 		<label>Owner</label>
-		<md-select ng-model="project.owner">
+		<label style="font-size:1.8em;color:#333333" ng-show="!isAuth">{{project.owner.lastName}}, {{project.owner.firstName}}</label>
+		<md-select ng-show="isAuth" ng-model="project.owner">
 			<md-option ng-repeat="resource in resources |  orderBy : 'lastName'" ng-value="resource">{{resource.lastName}}, {{resource.firstName}}</md-option>
 		</md-select>
 	</md-input-container>
 	<md-input-container flex>
 		<label>Description</label>
-		<textarea ng-model="project.summary" columns="1" md-maxlength="350"></textarea>
+		<label style="font-size:1.8em;color:#333333;" ng-show="!isAuth">{{project.summary}}</label>
+		<textarea ng-show="isAuth" ng-model="project.summary" columns="1"></textarea>
 	</md-input-container>
 </md-content>
-<md-content layout-padding layout="column" layout-sm="column"> 
+<md-content ng-show="isAuth" layout-padding layout="column" layout-sm="column"> 
 	<md-button ng-click="clear()" class="md-raised">Clear</md-button>
-    <md-button ng-click="save()" class="md-raised md-primary">Save</md-button>
+    <md-button ng-click="save($event)" class="md-raised md-primary">Save</md-button>
 </md-content>

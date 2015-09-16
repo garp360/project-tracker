@@ -33,6 +33,9 @@
 				proj.owner = BaseFactory.convertResourceToJson(project.owner);
 				proj.status =  BaseFactory.convertStatusToJson(project.status);
 				summary : BaseFactory.getValue(project.summary, "");
+				deferred.resolve(proj.$save());
+			}, function(error) {
+				deferred.reject("UPDATE_PROJECT::Failed to update project! ERROR: " + error);
 			});
 			
 			return deferred.promise;
@@ -40,7 +43,7 @@
 
 		function create(project) 
 		{
-			var proj = BaseFactory.convertToProjectJson(project);
+			var proj = BaseFactory.convertProjectToJson(project);
 			var projId = BaseFactory.createProjectId();
 			BaseFactory.PROJECT_REF.child(projId).set(proj);
 			return findById(projId);

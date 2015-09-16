@@ -49,7 +49,7 @@
 <link href="vendor/angular-material/0.10.1/angular.material.css" rel="stylesheet" type="text/css" />
 </head>
 <body layout="column" ng-controller="AppController">
-	<div layout="row" flex>
+	<div layout="row" flex id="appContainer">
 		<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left"> 
 			<md-toolbar class="md-theme-indigo">
 				<h1 class="md-toolbar-tools">Sidenav Left</h1>
@@ -64,20 +64,20 @@
 				<table class="md-toolbar-tools" style="height: 48px; max-height: 48px; table-layout:fixed; width: 100%;font-size:1.2em;padding:16px 4px;">
 					<tr>
 						<td width="1">
-							<md-button class="md-icon-button" style="width:24px;" aria-label="Menu" ng-click="toggleLeft()"> <i class="fa fa-bars fa-lg"></i> </md-button>
+							<md-button class="md-icon-button" style="width:24px;" aria-label="Menu" title="Menu" ng-click="toggleLeft()"> <i class="fa fa-bars fa-lg"></i> </md-button>
 						</td>
 						<td width="100%" style="font-size:.85em">
 							Project Tracker
 						</td>
 						<td width="1">
-							<md-button class="md-icon-button" style="width:24px;" aria-label="Home" ng-click="goToHome()"> <i class="fa fa-home fa-lg"></i> </md-button>
+							<md-button class="md-icon-button" style="width:24px;" aria-label="Home" title="Home" ng-click="goToHome()"> <i class="fa fa-home fa-lg"></i> </md-button>
 						</td>
 						<td width="1">
-							<md-button ng-show="!isAuth" class="md-icon-button" style="width:24px;" aria-label="Login" ng-click="goToSignIn()"> <i class="fa fa-sign-in fa-lg"></i> </md-button>
-							<md-button ng-show="isAuth" class="md-icon-button" style="width:24px;" aria-label="Logout" ng-click="signOut()"> <i class="fa fa-sign-out fa-lg"></i> </md-button>
+							<md-button ng-show="!isAuth" class="md-icon-button" style="width:24px;" aria-label="Login" title="Login" ng-click="goToSignIn()"> <i class="fa fa-sign-in fa-lg"></i> </md-button>
+							<md-button ng-show="isAuth" class="md-icon-button" style="width:24px;" aria-label="Logout" title="Logout" ng-click="signOut()"> <i class="fa fa-sign-out fa-lg"></i> </md-button>
 						</td>
 						<td width="1">
-							<md-button class="md-icon-button" style="width:24px;" aria-label="Add"  ng-click="toggleRight()"> <i class="fa fa-plus-square-o fa-lg"></i> </md-button>
+							<md-button ng-disabled="!isAuth" class="md-icon-button" style="width:24px;" aria-label="Add" title="New" ng-click="toggleRight()"> <i class="fa fa-plus-square-o fa-lg"></i> </md-button>
 						</td>
 					</tr>
 				</table>

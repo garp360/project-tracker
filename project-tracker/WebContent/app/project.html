@@ -1,33 +1,33 @@
-<md-subheader ng-show="isAuth && !project.$id" class="md-primary">Create Project</md-subheader>
-<md-subheader ng-show="isAuth && project.$id" class="md-primary">Edit Project</md-subheader>
 <md-content layout-padding layout="column" layout-sm="column"> 
+	<md-subheader ng-show="isAuth && !project.$id" class="md-primary">Create Project</md-subheader>
+	<md-subheader ng-show="isAuth && project.$id" class="md-primary">Edit Project</md-subheader>
 	<md-input-container  flex>
 		<label>Project Name</label> 
-		<label style="font-size:1.8em;color:#333333" ng-show="!isAuth">{{project.name}}</label>
+		<label style="font-size:1.3em;color:#111111;" ng-show="!isAuth">{{project.name}}</label>
 		<input ng-show="isAuth" ng-model="project.name">
 	</md-input-container> 
 	<md-input-container flex> 
 		<label>Project Code</label>
-		<label style="font-size:1.8em;color:#333333" ng-show="!isAuth">{{project.code}}</label>
+		<label style="font-size:1.3em;color:#111111;" ng-show="!isAuth">{{project.code}}</label>
 		<input ng-show="isAuth" ng-model="project.code">
 	</md-input-container>
 	<md-input-container flex> 
 		<label>Status</label>
-		<label style="font-size:1.8em;color:#333333" ng-show="!isAuth">{{project.status.color}}</label>
+		<label style="font-size:1.3em;color:#111111;" ng-show="!isAuth">{{project.status.color}}</label>
 		<md-select ng-show="isAuth" ng-model="project.status">
 			<md-option ng-repeat="status in statusTypes | orderBy : 'order'" ng-value="status">{{status.color}}</md-option>
 		</md-select>
 	</md-input-container>
 	<md-input-container flex> 
 		<label>Owner</label>
-		<label style="font-size:1.8em;color:#333333" ng-show="!isAuth">{{project.owner.lastName}}, {{project.owner.firstName}}</label>
+		<label style="font-size:1.3em;color:#111111;" ng-show="!isAuth">{{project.owner.lastName}}, {{project.owner.firstName}}</label>
 		<md-select ng-show="isAuth" ng-model="project.owner">
 			<md-option ng-repeat="resource in resources |  orderBy : 'lastName'" ng-value="resource">{{resource.lastName}}, {{resource.firstName}}</md-option>
 		</md-select>
 	</md-input-container>
 	<md-input-container flex>
 		<label>Description</label>
-		<label style="font-size:1.8em;color:#333333;" ng-show="!isAuth">{{project.summary}}</label>
+		<label style="font-size:1.3em;color:#111111;" ng-show="!isAuth">{{project.summary}}</label>
 		<textarea ng-show="isAuth" ng-model="project.summary" columns="1"></textarea>
 	</md-input-container>
 </md-content>

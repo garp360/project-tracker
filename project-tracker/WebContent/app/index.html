@@ -36,6 +36,10 @@
 <script type='text/javascript' src="app/script/login.controller.js"></script>
 <script type='text/javascript' src="app/script/registration.controller.js"></script>
 
+<!-- directive -->
+<script type='text/javascript' src="sec/module.directive.js"></script>
+<script type='text/javascript' src="app/script/project.directive.js"></script>
+
 <!-- application -->
 <script type='text/javascript' src="app/script/app.js"></script>
 <script type='text/javascript' src="app/script/app.route.js"></script>
@@ -47,11 +51,12 @@
 
 <!-- style -->
 <link href="vendor/angular-material/0.10.1/angular.material.css" rel="stylesheet" type="text/css" />
+<link href="app/style/app.css" rel="stylesheet" type="text/css" />
 </head>
 <body layout="column" ng-controller="AppController">
 	<div layout="row" flex id="appContainer">
 		<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left"> 
-			<md-toolbar class="md-theme-indigo">
+			<md-toolbar>
 				<h1 class="md-toolbar-tools">Sidenav Left</h1>
 			</md-toolbar> 
 			<md-content layout-padding ng-controller="SideBarLeftController"> 
@@ -59,7 +64,7 @@
 				<p hide-md show-gt-md>This sidenav is locked open on your device. To go back to the default behavior, narrow your display.</p>
 			</md-content> 
 		</md-sidenav>
-		<section layout="column" flex>
+		<md-content layout="column" flex>
 			<md-toolbar style="min-height: 48px;position: fixed; top:0px; left:0px;">
 				<table class="md-toolbar-tools" style="height: 48px; max-height: 48px; table-layout:fixed; width: 100%;font-size:1.2em;padding:16px 4px;">
 					<tr>
@@ -77,13 +82,13 @@
 							<md-button ng-show="isAuth" class="md-icon-button" style="width:24px;" aria-label="Logout" title="Logout" ng-click="signOut()"> <i class="fa fa-sign-out fa-lg"></i> </md-button>
 						</td>
 						<td width="1">
-							<md-button ng-disabled="!isAuth" class="md-icon-button" style="width:24px;" aria-label="Add" title="New" ng-click="toggleRight()"> <i class="fa fa-plus-square-o fa-lg"></i> </md-button>
+							<md-button ng-disabled="!isAuth" class="md-icon-button" style="width:24px;" aria-label="Add" ng-click="toggleRight()"> <i title="New" class="fa fa-plus-square-o fa-lg"></i> </md-button>
 						</td>
 					</tr>
 				</table>
 			</md-toolbar>
 			<md-content id="content" style="padding-top:50px;"><div ui-view></div></md-content>
-		</section>
+		</md-content>
 		<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right"> 
 			<md-toolbar class="md-theme-light">
 				<h1 class="md-toolbar-tools">Add</h1>

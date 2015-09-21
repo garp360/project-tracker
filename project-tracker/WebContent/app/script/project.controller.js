@@ -38,7 +38,7 @@
 				if($scope.project.$id) 
 				{
 					ProjectFactory.save($scope.project);
-					showSuccess(ev, "Project successfully updated!");
+					$state.reload();
 				} 
 				else
 				{
@@ -76,20 +76,20 @@
 				}
 			}
 			
-			function showSuccess(ev, message) {
-			    // Appending dialog to document.body to cover sidenav in docs app
-			    // Modal dialogs should fully cover application
-			    // to prevent interaction outside of dialog
-			    $mdDialog.show(
-			      $mdDialog.alert()
-			        .parent(angular.element(document.querySelector('#appContainer')))
-			        .clickOutsideToClose(true)
-			        .title('Success!')
-			        .content(message)
-			        .ariaLabel('Success: ' + message)
-			        .ok('Got it!')
-			        .targetEvent(ev)
-			    );
-			  };
+//			function showSuccess(ev, message) {
+//			    // Appending dialog to document.body to cover sidenav in docs app
+//			    // Modal dialogs should fully cover application
+//			    // to prevent interaction outside of dialog
+//			    $mdDialog.show(
+//			      $mdDialog.alert()
+//			        .parent(angular.element(document.querySelector('#appContainer')))
+//			        .clickOutsideToClose(true)
+//			        .title('Success!')
+//			        .content(message)
+//			        .ariaLabel('Success: ' + message)
+//			        .ok('Got it!')
+//			        .targetEvent(ev)
+//			    );
+//			  };
 		};
 })();

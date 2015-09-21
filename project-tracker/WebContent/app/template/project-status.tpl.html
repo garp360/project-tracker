@@ -1,0 +1,11 @@
+<div class="project-status-container {{project.status.color}}" style="border-left: 4px solid {{project.status.color}};">
+	<div class="percentage">
+		<div class="text" style="width:72%;">72%</div>
+	</div> 
+	<div class="status">
+		<div class="complete {{project.status.color}}" style="width:72%;"></div>
+		<span class="project">{{ project.name }}</span>
+	</div> 
+	<div class="status color" style="background-color: {{project.status.color}};"></div>
+	<span class="owner">{{ project.owner.firstName }} {{ project.owner.lastName }} - {{ project.owner.contactInfo.phone }}</span>
+</div>

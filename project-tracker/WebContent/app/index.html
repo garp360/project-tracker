@@ -56,15 +56,15 @@
 <body layout="column" ng-controller="AppController">
 	<div layout="row" flex id="appContainer">
 		<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left"> 
-			<md-toolbar>
-				<h1 class="md-toolbar-tools">Sidenav Left</h1>
+			<md-toolbar class="md-theme-indigo">
+				<h1 class="md-toolbar-tools">Settings</h1>
 			</md-toolbar> 
-			<md-content layout-padding ng-controller="SideBarLeftController"> 
+			<md-content ng-controller="SideBarLeftController"> 
 				<md-button ng-click="close()" class="md-primary" hide-gt-md> Close Sidenav Left </md-button>
 				<p hide-md show-gt-md>This sidenav is locked open on your device. To go back to the default behavior, narrow your display.</p>
 			</md-content> 
 		</md-sidenav>
-		<md-content layout="column" flex>
+		<md-content layout="column" flex style="background-color:#101010;">
 			<md-toolbar style="min-height: 48px;position: fixed; top:0px; left:0px;">
 				<table class="md-toolbar-tools" style="height: 48px; max-height: 48px; table-layout:fixed; width: 100%;font-size:1.2em;padding:16px 4px;">
 					<tr>
@@ -87,7 +87,7 @@
 					</tr>
 				</table>
 			</md-toolbar>
-			<md-content id="content" style="padding-top:50px;"><div ui-view></div></md-content>
+			<md-content id="content" style="padding-top:50px;background-color:#101010;" ><div ui-view></div></md-content>
 		</md-content>
 		<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right"> 
 			<md-toolbar class="md-theme-light">

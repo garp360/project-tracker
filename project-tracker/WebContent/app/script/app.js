@@ -4,30 +4,22 @@
 		.module('astadia.trax', ['ui.router', 'ngMessages', 'ngMaterial', 'firebase', 'controller.module', 'factory.module', 'directive.module'])
 		
 		.config(function ($mdThemingProvider) {
-			var appPrimaryPalette = $mdThemingProvider.extendPalette('blue-grey', {
-				'A400': '070707'
+			var appBkgPalette = $mdThemingProvider.extendPalette('teal', {
+			    'A100': '131313',
+			    'contrastDefaultColor': 'light',    // whether, by default, text (contrast) on this palette should be dark or light
+				'contrastDarkColors': ['50', '100', //hues which contrast should be 'dark' by default
+				'200', '300', '400', 'A100'],
+				'contrastLightColors': undefined    // could also specify this if default was 'dark'
 			});
-			var appBkgPalette = $mdThemingProvider.extendPalette('grey', {
-			    '900': '131313'
-			  });
-			$mdThemingProvider.definePalette('appPrimaryPalette', appPrimaryPalette);
+			
 			$mdThemingProvider.definePalette('appBkgPalette', appBkgPalette);
+			
 			$mdThemingProvider
-			    .theme('default')
-			    .primaryPalette('appPrimaryPalette', {
-			    	'default': 'A400',
-			        'hue-1': '800',
-			        'hue-2': '600',
-			        'hue-3': '400'
-			    })
+			    .theme('default').dark()
+			    .primaryPalette('teal')
 			    .accentPalette('blue')
 			    .warnPalette('red')
-			    .backgroundPalette('appBkgPalette', {
-			    	'default': '900',
-			        'hue-1': '800',
-			        'hue-2': '600',
-			        'hue-3': '400'
-			    }).dark();
+			    .backgroundPalette('appBkgPalette');
 			})
 		
 		.run(["$rootScope", "$location", function($rootScope, $location) {

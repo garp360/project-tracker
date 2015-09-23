@@ -1,39 +1,48 @@
-<md-content layout-padding layout="column" layout-sm="column"> 
-	<md-input-container  flex>
+<md-content layout-padding layout="column" flex style="padding-bottom:45px;background-color:transparent;"> 
+	<md-input-container>
 		<label>First Name</label> 
 		<input ng-model="registration.firstName">
 	</md-input-container> 
-	<md-input-container  flex>
+	<md-input-container>
 		<label>Last Name</label> 
 		<input ng-model="registration.lastName">
 	</md-input-container> 
-	<md-input-container  flex>
+	<md-input-container>
 		<label>Middle Initial</label> 
 		<input ng-model="registration.middleInitial">
 	</md-input-container> 
-	<md-input-container  flex>
+	<md-input-container>
 		<label>Email</label> 
 		<input ng-model="registration.email">
 	</md-input-container> 
-	<md-input-container  flex>
+	<md-input-container>
 		<label>Password</label> 
 		<input type="password" ng-model="registration.password">
 	</md-input-container> 
-	<md-input-container  flex>
+	<md-input-container>
 		<label>Password (Confirm)</label> 
 		<input type="password" ng-model="registration.confirm">
 	</md-input-container> 
 </md-content>
-<md-toolbar style="min-height: 28px;position: fixed; bottom:0px; left:0px;background-color:#B1B1B1;">
-	<table class="md-toolbar-tools" style="height: 28px; max-height: 28px; table-layout:fixed; width: 100%;font-size:1em;padding:16px 4px;">
-		<tr>
-			<td width="1" align="center">
-				<md-button ng-click="clear()">Clear</md-button>
-			</td>
-			<td width="100%" align="center"> </td>
-			<td width="1" align="center">
-				<md-button class="md-primary" ng-click="register()">Register</md-button>
-			</td>
-		</tr>
-	</table>
-</md-toolbar>
+<md-content layout="column" flex style="background-color:transparent;">
+  <div hide-sm>
+    <md-content layout="row" style="background-color:transparent;"> 
+	    <md-button class="md-raised" ng-click="clear()">Clear1</md-button>
+		<md-button class="md-raised md-primary" ng-click="register()">Register1</md-button>
+	</md-content>
+  </div>
+  <div hide-gt-sm>
+    <md-toolbar layout layout-padding style="min-height: 35px;position: fixed; bottom:0px; left:0px;background-color:#000000;">
+
+		    <md-button class="md-raised" ng-click="clear()" style="color: rgba(0, 0, 0, 0.87);">Clear2</md-button>
+			<md-button class="md-raised md-primary" ng-click="register()">Register2</md-button>
+
+	</md-toolbar>
+  </div>
+</md-content>
+
+
+
+
+
+

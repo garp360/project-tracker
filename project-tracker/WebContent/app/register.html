@@ -1,4 +1,4 @@
-<md-content layout-padding layout="column" flex style="padding-bottom:45px;background-color:transparent;"> 
+<md-content layout-padding layout="column" flex style="padding-bottom:90px;background-color:transparent;"> 
 	<md-input-container>
 		<label>First Name</label> 
 		<input ng-model="registration.firstName">
@@ -27,16 +27,14 @@
 <md-content layout="column" flex style="background-color:transparent;">
   <div hide-sm>
     <md-content layout="row" style="background-color:transparent;"> 
-	    <md-button class="md-raised" ng-click="clear()">Clear1</md-button>
-		<md-button class="md-raised md-primary" ng-click="register()">Register1</md-button>
+	    <md-button class="md-raised" ng-click="clear()">Clear</md-button>
+		<md-button class="md-raised md-primary" ng-click="register()">Save</md-button>
 	</md-content>
   </div>
   <div hide-gt-sm>
-    <md-toolbar layout layout-padding style="min-height: 35px;position: fixed; bottom:0px; left:0px;background-color:#000000;">
-
-		    <md-button class="md-raised" ng-click="clear()" style="color: rgba(0, 0, 0, 0.87);">Clear2</md-button>
-			<md-button class="md-raised md-primary" ng-click="register()">Register2</md-button>
-
+    <md-toolbar layout="row" layout-align="center center" layout-padding style="min-height: 35px;position: fixed; bottom:0px; left:0px;background-color:#000000;">
+	    <md-button class="md-raised" ng-click="clear()" style="color: rgba(0, 0, 0, 0.87);">Clear</md-button>
+		<md-button class="md-raised md-primary" ng-click="register()">Save</md-button>
 	</md-toolbar>
   </div>
 </md-content>

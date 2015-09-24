@@ -16,7 +16,7 @@
 			
 			$mdThemingProvider
 			    .theme('default').dark()
-			    .primaryPalette('teal')
+			    .primaryPalette('grey')
 			    .accentPalette('blue')
 			    .warnPalette('red')
 			    .backgroundPalette('appBkgPalette');

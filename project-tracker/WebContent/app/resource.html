@@ -27,7 +27,17 @@
 		</md-select>
 	</md-input-container>
 </md-content>
-<md-content layout-padding layout="column" layout-sm="column"> 
-	<md-button ng-click="clear()"class="md-raised">Clear</md-button>
-    <md-button ng-click="save()" class="md-raised md-primary">Save</md-button>
+<md-content ng-show="isAuth" layout="column" flex style="background-color:transparent;">
+  <div hide-sm>
+    <md-content layout="row" style="background-color:transparent;"> 
+	    <md-button ng-click="clear()"class="md-raised">Clear</md-button>
+   		<md-button ng-click="save()" class="md-raised md-primary">Save</md-button>
+	</md-content>
+  </div>
+  <div hide-gt-sm>
+    <md-toolbar layout="row" layout-align="center center" layout-padding style="min-height: 35px;position: fixed; bottom:0px; left:0px;background-color:#000000;">
+	    <md-button ng-click="clear()"class="md-raised">Clear</md-button>
+    	<md-button ng-click="save()" class="md-raised md-primary">Save</md-button>
+	</md-toolbar>
+  </div>
 </md-content>

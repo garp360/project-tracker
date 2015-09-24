@@ -9,7 +9,17 @@
 		<input type="password" ng-model="token.password">
 	</md-input-container>
 </md-content>
-<md-content layout="row" layout-sm="column"> 
-    <md-button class="md-raised md-primary" ng-click="signIn()">Sign In</md-button><br />
-	<md-button class="md-raised" ng-click="register()">Register</md-button>
+<md-content ng-show="!isAuth" layout="column" flex style="background-color:transparent;">
+  <div hide-sm>
+    <md-content layout="row" style="background-color:transparent;"> 
+	    <md-button class="md-raised md-primary" ng-click="signIn()">Sign In</md-button><br />
+		<md-button class="md-raised" ng-click="register()">Register</md-button>
+	</md-content>
+  </div>
+  <div hide-gt-sm>
+    <md-toolbar layout="row" layout-align="center center" layout-padding style="min-height: 35px;position: fixed; bottom:0px; left:0px;background-color:#000000;">
+	    <md-button class="md-raised md-primary" ng-click="signIn()">Sign In</md-button><br />
+		<md-button class="md-raised" ng-click="register()">Register</md-button>
+	</md-toolbar>
+  </div>
 </md-content>

@@ -1,37 +1,45 @@
-<md-content layout-padding layout="column" layout-sm="column"> 
-	<md-subheader ng-show="isAuth && !project.$id" class="md-primary">Create Project</md-subheader>
-	<md-subheader ng-show="isAuth && project.$id" class="md-primary">Edit Project</md-subheader>
-	<md-input-container  flex>
+<md-content layout-padding layout="column" flex style="padding-bottom:90px;background-color:transparent;"> 
+	<md-input-container>
 		<label>Project Name</label> 
-		<label style="font-size:1.3em;color:#111111;" ng-show="!isAuth">{{project.name}}</label>
+		<label class="view-label" ng-show="!isAuth">{{project.name}}</label>
 		<input ng-show="isAuth" ng-model="project.name">
 	</md-input-container> 
-	<md-input-container flex> 
+	<md-input-container> 
 		<label>Project Code</label>
-		<label style="font-size:1.3em;color:#111111;" ng-show="!isAuth">{{project.code}}</label>
+		<label class="view-label" ng-show="!isAuth">{{project.code}}</label>
 		<input ng-show="isAuth" ng-model="project.code">
 	</md-input-container>
-	<md-input-container flex> 
+	<md-input-container> 
 		<label>Status</label>
-		<label style="font-size:1.3em;color:#111111;" ng-show="!isAuth">{{project.status.color}}</label>
+		<label class="view-label" ng-show="!isAuth">{{project.status.color}}</label>
 		<md-select ng-show="isAuth" ng-model="project.status">
 			<md-option ng-repeat="status in statusTypes | orderBy : 'order'" ng-value="status">{{status.color}}</md-option>
 		</md-select>
 	</md-input-container>
-	<md-input-container flex> 
+	<md-input-container> 
 		<label>Owner</label>
-		<label style="font-size:1.3em;color:#111111;" ng-show="!isAuth">{{project.owner.lastName}}, {{project.owner.firstName}}</label>
+		<label class="view-label" ng-show="!isAuth">{{project.owner.lastName}}, {{project.owner.firstName}}</label>
 		<md-select ng-show="isAuth" ng-model="project.owner">
 			<md-option ng-repeat="resource in resources |  orderBy : 'lastName'" ng-value="resource">{{resource.lastName}}, {{resource.firstName}}</md-option>
 		</md-select>
 	</md-input-container>
-	<md-input-container flex>
+	<md-input-container>
 		<label>Description</label>
-		<label style="font-size:1.3em;color:#111111;" ng-show="!isAuth">{{project.summary}}</label>
+		<label class="view-label" ng-show="!isAuth">{{project.summary}}</label>
 		<textarea ng-show="isAuth" ng-model="project.summary" columns="1"></textarea>
 	</md-input-container>
 </md-content>
-<md-content ng-show="isAuth" layout-padding layout="column" layout-sm="column"> 
-	<md-button ng-click="clear()" class="md-raised">Clear</md-button>
-    <md-button ng-click="save($event)" class="md-raised md-primary">Save</md-button>
+<md-content ng-show="isAuth" layout="column" flex style="background-color:transparent;">
+  <div hide-sm>
+    <md-content layout="row" style="background-color:transparent;"> 
+	    <md-button ng-click="clear()" class="md-raised">Clear</md-button>
+    	<md-button ng-click="save($event)" class="md-raised md-primary">Save</md-button>
+	</md-content>
+  </div>
+  <div hide-gt-sm>
+    <md-toolbar layout="row" layout-align="center center" layout-padding style="min-height: 35px;position: fixed; bottom:0px; left:0px;background-color:#000000;">
+	    <md-button ng-click="clear()" class="md-raised">Clear</md-button>
+    	<md-button ng-click="save($event)" class="md-raised md-primary">Save</md-button>
+	</md-toolbar>
+  </div>
 </md-content>

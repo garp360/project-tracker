@@ -4,7 +4,7 @@
 		.module('astadia.trax', ['ui.router', 'ngMessages', 'ngMaterial', 'firebase', 'controller.module', 'factory.module', 'directive.module'])
 		
 		.config(function ($mdThemingProvider) {
-			var appBkgPalette = $mdThemingProvider.extendPalette('teal', {
+			var appBkgPalette = $mdThemingProvider.extendPalette('grey', {
 			    'A100': '131313',
 			    'contrastDefaultColor': 'light',    // whether, by default, text (contrast) on this palette should be dark or light
 				'contrastDarkColors': ['50', '100', //hues which contrast should be 'dark' by default
@@ -16,7 +16,7 @@
 			
 			$mdThemingProvider
 			    .theme('default').dark()
-			    .primaryPalette('grey')
+			    .primaryPalette('blue')
 			    .accentPalette('blue')
 			    .warnPalette('red')
 			    .backgroundPalette('appBkgPalette');
